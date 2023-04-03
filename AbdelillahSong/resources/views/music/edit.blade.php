@@ -1,0 +1,67 @@
+@extends('home')
+@section('edit music')
+@section('title', 'update music')
+    <div class="ml-[180%]">
+        <form action="{{ route('music.update', ['music' => $music->id])}}" method="POST" enctype="multipart/form-data"  class="flex flex-col items-center gap-4 mt-20">
+            @csrf
+            @method('PUT')
+            <div>
+                <label for="">Titre</label><br>
+                <input type="text" name="titre" id="" class="border-8" value="{{ $music->titre }}">
+                @error('titre')
+                    <div class="text-red-500">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div>
+                <label for="description">description</label><br>
+                <input type="text" name="description" id="" class="border-8" value="{{ $music->description }}">
+                @error('description')
+                    <div class="text-red-500">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div>
+                <label for="Artist">Artist</label><br>
+                <input type="text" name="artist" id="" class="border-8" value="{{ $music->artist }}">
+                @error('artist')
+                    <div class="text-red-500">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div>
+                <label for="category">Category</label><br>
+                <input type="text" name="category" id="" class="border-8" value="{{ $music->category }}">
+                @error('category')
+                    <div class="text-red-500">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div>
+                <label for="image">choose image</label><br>
+                <input type="file" name="image" id="" class="border-8" value="{{ $music->image }}">
+                @error('image')
+                    <div class="text-red-500">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div>
+                <label for="music">choose Music</label><br>
+                <input type="file" accept="audio/*" name="music" id="" class="border-8" value="{{ $music->music }}">
+                @error('music')
+                    <div class="text-red-500">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div>
+                <button class="bg-blue-500 mt-4 border-8" type="submit" >Submit</button>
+            </div>
+        </form>
+    </div>
+@endsection
